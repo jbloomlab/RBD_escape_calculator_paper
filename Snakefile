@@ -2,16 +2,44 @@
 
 
 import io
+import urllib.request
 
 import pandas as pd
 
 import pdfplumber
 
+import PIL
+
+import pytesseract
+
 
 rule all:
     input:
         'results/neut_studies/LucasIwasaki_data.csv',
-        'results/neut_studies/UriuSato_data.csv'
+        'results/neut_studies/UriuSato_data.csv',
+        'results/neut_studies/WangHo_data.csv',
+
+rule get_WangHo_data:
+    """Get data from https://www.nature.com/articles/s41586-021-03398-2."""
+    input:
+        convalescent='downloads/WangHo_Fig3b.txt',
+        vaccinated='downloads/WangHo_Fig4b.txt',
+    output: csv='results/neut_studies/WangHo_data.csv'
+    run:
+        dfs = []
+        for group, path in [('convalescent', input.convalescent), ('vaccinated', input.vaccinated)]:
+            dfs.append(
+                pd.read_csv(path, sep=' ')
+                .melt(id_vars='RBD_mutations',
+                      var_name='sample',
+                      value_name='fold_change',
+                      )
+                .assign(fold_change=lambda x: x['fold_change'].where(x['fold_change'] > 0,
+                                                                     1 / x['fold_change'].abs()),
+                        group=group,
+                        )
+                )
+        pd.concat(dfs).to_csv(output.csv, index=False)
 
 rule get_UriuSato_data:
     """Get data from https://www.nejm.org/doi/full/10.1056/NEJMc2114706."""
