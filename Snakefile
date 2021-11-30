@@ -19,6 +19,14 @@ rule all:
         'results/neut_studies/UriuSato_data.csv',
         'results/neut_studies/WangHo_data.csv',
 
+rule plot_neut_studies:
+    input:
+        expand("results/neut_studies/{study}_data.csv",
+               study=['LucasIwasaki', 'UriuSato', 'WangHo'])
+    output: '_temp.txt'
+    run:
+        raise NotImplemented
+
 rule get_WangHo_data:
     """Get data from https://www.nature.com/articles/s41586-021-03398-2."""
     input:
@@ -68,10 +76,11 @@ rule get_UriuSato_data:
         df = (pd.concat(dfs, ignore_index=True)
               .melt(id_vars=['sample', 'group'],
                     value_vars=params.variant_muts,
-                    value_name='IC50',
+                    value_name='IC50_str',
                     var_name='variant')
               .assign(RBD_mutations=lambda x: x['variant'].map(params.variant_muts),
-                      IC50=lambda x: x['IC50'].str.replace(',', '').str.replace('<', '').astype(float),
+                      IC50_str=lambda x: x['IC50_str'].astype(str),
+                      IC50=lambda x: x['IC50_str'].str.replace(',', '').str.replace('<', '').astype(float),
                       variant=lambda x: pd.Categorical(x['variant'], params.variant_muts, ordered=True),
                       )
               .sort_values('variant')
