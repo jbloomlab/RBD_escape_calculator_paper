@@ -1,0 +1,91 @@
+\documentclass[9pt,twocolumn,twoside]{gsajnl_modified}
+% Use the documentclass option 'lineno' to view line numbers
+
+\usepackage[htt]{hyphenat}  % https://tex.stackexchange.com/a/543
+\usepackage[export]{adjustbox}
+\usepackage{xurl}
+\usepackage{stfloats}
+
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    \setcounter{topnumber}{2}
+    \setcounter{bottomnumber}{2}
+    \setcounter{totalnumber}{4}     % 2 may work better
+    \setcounter{dbltopnumber}{2}    % for 2-column pages
+    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+\title{An antibody-escape calculator for mutations to the SARS-CoV-2 receptor-binding domain}
+
+\author[*]{\Large Allison J. Greaney$^{1,2,3}$, Tyler N. Starr$^{1,4}$, Jesse D. Bloom$^{1,2,4}$}
+
+\affil[1]{Basic Sciences and Computational Biology, Fred Hutchinson Cancer Center
+
+} 
+\affil[2]{Department of Genome Sciences, University of Washington
+
+}
+\affil[3]{Medical Scientist Training Program, University of Washington
+
+}
+\affil[4]{Howard Hughes Medical Institute
+
+Seattle, WA, USA
+}
+
+\keywords{}
+
+\runningtitle{} % For use in the footer 
+\runningauthor{}
+
+\begin{abstract}
+A key goal of SARS-CoV-2 surveillance is to rapidly identify viral variants with mutations that reduce neutralization by polyclonal antibodies elicited by vaccination or infection.
+Unfortunately, direct experimental characterization of new viral variants substantially lags their sequence-based identification. 
+Here we help overcome this challenge by providing an ``escape calculator'' that estimates the antigenic effects of arbitrary combinations of mutations to the virus's spike receptor-binding domain (RBD).
+Specifically, the calculator aggregates deep mutational scanning data to visualize how mutations impact polyclonal antibody recognition.
+It also quantitatively scores how much each mutant is expected to escape RBD-targeted antibody neutralization.
+These scores correlate with neutralization assays performed by multiple labs on a range of SARS-CoV-2 variants, and emphasize the ominous antigenic properties of the mutations in the recently described Omicron variant.
+An interactive version of the calculator is at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/}, and we provide a Python module for batch processing.
+\end{abstract}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{firststyle}
+%\marginmark
+\firstpagefootnote
+
+\correspondingauthoraffiliation{}{*Corresponding author: \href{mailto:jbloom@fredhutch.org}{jbloom@fredhutch.org}}
+\vspace{-33pt}% Only used for adjusting extra space in the left column of the first page
+
+\lettrine[lines=2]{\color{color2}T}{}he last two years...
+
+\section{Results}
+
+\subsection{}
+
+\section{Discussion}
+
+
+{\small
+
+\section{Methods}
+\subsection{Code and data availability}
+
+\section{Acknowledgments}
+{\color{red} More}
+JDB is an Investigator of the Howard Hughes Medical Institute.
+
+\section{Competing interests}
+JDB consults for Moderna and Flagship Labs 77, and is an inventor on a Fred Hutch licensed patents related to deep mutational scanning of viral proteins.
+
+}
+
+\bibliography{references}
+
+\end{document}
