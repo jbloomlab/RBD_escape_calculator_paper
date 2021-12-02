@@ -15,23 +15,23 @@ import pytesseract
 
 rule all:
     input:
-        'results/neut_studies/LucasIwasaki_data.csv',
-        'results/neut_studies/UriuSato_data.csv',
-        'results/neut_studies/WangHo_data.csv',
+        'results/neut_studies/neut_studies.html',
+        'results/neut_studies/neut_studies.png',
 
 rule plot_neut_studies:
     input:
         expand("results/neut_studies/{study}_data.csv",
                study=['LucasIwasaki', 'UriuSato', 'WangHo'])
-    output: '_temp.txt'
-    run:
-        raise NotImplemented
+    output:
+        html='results/neut_studies/neut_studies.html',
+        png='results/neut_studies/neut_studies.png',
+    notebook: 'plot_neut_studies.py.ipynb'
 
 rule get_WangHo_data:
     """Get data from https://www.nature.com/articles/s41586-021-03398-2."""
     input:
-        convalescent='downloads/WangHo_Fig3b.txt',
-        vaccinated='downloads/WangHo_Fig4b.txt',
+        convalescent='data/WangHo_Fig3b.txt',
+        vaccinated='data/WangHo_Fig4b.txt',
     output: csv='results/neut_studies/WangHo_data.csv'
     run:
         dfs = []
@@ -51,7 +51,7 @@ rule get_WangHo_data:
 
 rule get_UriuSato_data:
     """Get data from https://www.nejm.org/doi/full/10.1056/NEJMc2114706."""
-    input: pdf='downloads/UriuSato_supp.pdf'
+    input: pdf='data/UriuSato_supp.pdf'
     output: csv='results/neut_studies/UriuSato_data.csv'
     params:
         # RBD mutations from Table S5 of https://www.nejm.org/doi/full/10.1056/NEJMc2114706
@@ -121,7 +121,7 @@ rule get_LucasIwasaki_data:
         assert set(df.columns).issuperset(variant_cols)
         df = (df
               .query('`Previous Exposure` in ["(+)", "(-)"]')
-              .assign(group=lambda x: x['Previous Exposure'].map({'(+)': 'vaccinated_then_infected',
+              .assign(group=lambda x: x['Previous Exposure'].map({'(+)': 'infected and vaccinated',
                                                                   '(-)': 'vaccinated'}),
                       has_all_neuts=lambda x: x[list(variant_cols)].apply(lambda s: pd.notnull(s).all(),
                                                                           axis=1),
