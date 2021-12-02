@@ -1,4 +1,5 @@
 *.aux
 *.out
 *.synctex.gz
+*.blg
 paper.pdf
