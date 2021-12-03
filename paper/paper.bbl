@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{15}
 
 \bibitem[{Barnes {\em et~al.\/}}(2020){Barnes, Jette, Abernathy, Dam, Esswein,
   Gristick, Malyutin, Sharaf, Huey-Tubman, Lee, {\em
@@ -42,12 +42,34 @@
   the receptor-binding domain of seasonal coronaviruses {OC43} and {229E}.
   Elife {\bf 10}: e64509.
 
+\bibitem[{Lucas {\em et~al.\/}}(2021){Lucas, Vogels, Yildirim, Rothman, Lu,
+  Monteiro, Gehlhausen, Campbell, Silva, Tabachnikova, {\em
+  et~al.\/}}]{lucas2021impact}
+{Lucas, C., C.~B. Vogels, I.~Yildirim, J.~E. Rothman, P.~Lu, {\em et~al.\/}},
+  2021 Impact of circulating sars-cov-2 variants on mrna vaccine-induced
+  immunity. Nature pp. 1--7.
+
+\bibitem[{Piccoli {\em et~al.\/}}(2020){Piccoli, Park, Tortorici,
+  Czudnochowski, Walls, Beltramello, Silacci-Fregni, Pinto, Rosen, Bowen, {\em
+  et~al.\/}}]{piccoli2020mapping}
+{Piccoli, L., Y.-J. Park, M.~A. Tortorici, N.~Czudnochowski, A.~C. Walls, {\em
+  et~al.\/}}, 2020 Mapping neutralizing and immunodominant sites on the
+  sars-cov-2 spike receptor-binding domain by structure-guided high-resolution
+  serology. Cell {\bf 183}: 1024--1042.
+
 \bibitem[{Robbiani {\em et~al.\/}}(2020){Robbiani, Gaebler, Muecksch, Lorenzi,
   Wang, Cho, Agudelo, Barnes, Gazumyan, Finkin, {\em
   et~al.\/}}]{robbiani2020convergent}
 {Robbiani, D.~F., C.~Gaebler, F.~Muecksch, J.~C. Lorenzi, Z.~Wang, {\em
   et~al.\/}}, 2020 Convergent antibody responses to sars-cov-2 in convalescent
   individuals. Nature {\bf 584}: 437--442.
+
+\bibitem[{Schmidt {\em et~al.\/}}(2021){Schmidt, Weisblum, Rutkowska, Poston,
+  DaSilva, Zhang, Bednarski, Cho, Schaefer-Babajew, Gaebler, {\em
+  et~al.\/}}]{schmidt2021high}
+{Schmidt, F., Y.~Weisblum, M.~Rutkowska, D.~Poston, J.~DaSilva, {\em
+  et~al.\/}}, 2021 High genetic barrier to sars-cov-2 polyclonal neutralizing
+  antibody escape. Nature pp. 1--5.
 
 \bibitem[{Starr {\em et~al.\/}}(2021{a}){Starr, Greaney, Addetia, Hannon,
   Choudhary, Dingens, Li, {\rm and} Bloom}]{starr2021prospective}
@@ -61,6 +83,18 @@
   {Complete map of SARS-CoV-2 RBD mutations that escape the monoclonal antibody
   LY-CoV555 and its cocktail with LY-CoV016}. Cell Reports Medicine {\bf 2}:
   100255.
+
+\bibitem[{Uriu {\em et~al.\/}}(2021){Uriu, Kimura, Shirakawa, Takaori-Kondo,
+  Nakada, Kaneda, Nakagawa, {\rm and} Sato}]{uriu2021neutralization}
+{Uriu, K., I.~Kimura, K.~Shirakawa, A.~Takaori-Kondo, T.-a. Nakada, {\em
+  et~al.\/}}, 2021 Neutralization of the sars-cov-2 mu variant by convalescent
+  and vaccine serum. New England Journal of Medicine .
+
+\bibitem[{Wang {\em et~al.\/}}(2021){Wang, Nair, Liu, Iketani, Luo, Guo, Wang,
+  Yu, Zhang, Kwong, {\em et~al.\/}}]{wang2021antibody}
+{Wang, P., M.~S. Nair, L.~Liu, S.~Iketani, Y.~Luo, {\em et~al.\/}}, 2021
+  Antibody resistance of sars-cov-2 variants b. 1.351 and b. 1.1. 7. Nature
+  {\bf 593}: 130--135.
 
 \bibitem[{Yuan {\em et~al.\/}}(2020){Yuan, Liu, Wu, Lee, Zhu, Zhao, Huang, Yu,
   Hua, Tien, {\em et~al.\/}}]{yuan2020structural}

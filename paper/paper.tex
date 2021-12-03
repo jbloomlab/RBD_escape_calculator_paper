@@ -52,7 +52,7 @@ Here we help address this challenge by providing an ``escape calculator'' that e
 Specifically, the calculator aggregates deep mutational scanning data to visualize how mutations impact polyclonal antibody recognition.
 It also scores how much each mutant is expected to escape RBD-targeted antibody neutralization.
 These scores correlate with neutralization assays performed by multiple labs on SARS-CoV-2 variants, and emphasize the ominous antigenic properties of the recently described Omicron variant.
-An interactive version of the calculator is at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/}, and we provide a Python module for batch processing.
+An interactive version of the calculator is at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/}, and we provide a module for batch processing.
 \end{abstract}
 
 \begin{document}
@@ -65,42 +65,42 @@ An interactive version of the calculator is at \url{https://jbloomlab.github.io/
 \correspondingauthoraffiliation{}{*Corresponding author: \href{mailto:jbloom@fredhutch.org}{jbloom@fredhutch.org}}
 \vspace{-33pt}% Only used for adjusting extra space in the left column of the first page
 
-\lettrine[lines=2]{\color{color2}H}{}uman coronaviruses undergo rapid antigenic evolution that erodes antibody-based neutralization~\citep{eguia2021human,kistler2021evidence}.
-This antigenic evolution is already apparent for SARS-CoV-2, as new viral variants with reduced antibody neutralization have already emerged only $\sim$2 years since the virus first started to spread in humans~\citep{?}.
-A tremendous amount of experimental effort has been expended to characterize these SARS-CoV-2 variants in neutralization assays~\citep{?}.
+\lettrine[lines=2]{\color{color2}H}{}uman coronaviruses undergo antigenic evolution that erodes antibody-based neutralization~\citep{eguia2021human,kistler2021evidence}.
+This antigenic evolution is already apparent for SARS-CoV-2, as new viral variants with reduced antibody neutralization have emerged only $\sim$2 years since the virus first started to spread in humans~\citep{?}.
+A tremendous amount of experimental effort has been expended to characterize these SARS-CoV-2 variants in neutralization assays~\citep{wang2021antibody,uriu2021neutralization,lucas2021impact}.
 Unfortunately, the rate at which new variants arise outstrips the speed with which these experiments can be performed.
 
 A partial solution is to use deep mutational scanning to \emph{prospectively} characterize how viral mutations impact antibody binding or neutralization.
-Deep mutational scanning can systematically the antigenic impacts of all possible amino-acid mutations in key regions of spike on specific antibodies~\citep{starr2021prospective,greaney2021complete} or sera~\citep{greaney2021comprehensive}.
+Deep mutational scanning can systematically measure the antigenic impacts of all possible amino-acid mutations in key regions of spike on specific antibodies~\citep{starr2021prospective,greaney2021complete} or sera~\citep{greaney2021comprehensive}.
 However, SARS-CoV-2 variants of concern typically have multiple mutations in spike, and it is not feasible to characterize all combinations of mutations even via high-throughput approaches such as deep mutational scanning.
 
-Here we take a step towards addressing this challenge by aggregating deep mutational scanning data across many antibodies to assess the impacts of combinations of mutations in the spike receptor-binding domain (RBD), which is the primary target of neutralizing antibodies to SARS-CoV-2~\citep{?}.
-The resulting ``escape calculator'' enables both qualitative visualization and quantitative scoring of the antigenic impacts of arbitrary combinations of RBD mutations.
-Importantly, the escape calculator is based on simple and intuitive transformations of direct experimental measurements, and does not involve complex black-box computational methods. 
+Here we take a step towards addressing this challenge by aggregating deep mutational scanning data across many antibodies to assess the impacts of combinations of mutations in the spike receptor-binding domain (RBD), which is the primary target of neutralizing antibodies to SARS-CoV-2~\citep{piccoli2020mapping,greaney2021comprehensive,schmidt2021high}.
+The resulting ``escape calculator'' enables qualitative visualization and quantitative scoring of the antigenic impacts of arbitrary combinations of mutations.
+Importantly, the escape calculator is based on simple transformations of direct experimental measurements, and does not involve complex black-box computational methods. 
 
 \section{Results}
 
 \subsection{Combining monoclonal antibody escape maps reveals correlated and independent viral antigenic mutations}
-A deep mutational scanning experiment can measure how all single amino-acid mutations to the SARS-CoV-2 RBD affect binding by a monoclonal antibody.
+A deep mutational scanning experiment can measure how all single amino-acid mutations to the SARS-CoV-2 RBD affect binding by a monoclonal antibody~\citep{greaney2021complete}.
 This mutation-level information can be summarized for each RBD site, such as by taking the mean or sum of mutation-level effects at a site.
 Here we will work with these site-level escape maps.
 
 As a small example to illustrate the principle behind our approach, Figure~\ref{fig:mini_example}A shows previously reported measurements~\citep{starr2021prospective, starr2021complete} of how mutations to each RBD site affect binding by three monoclonal antibodies: LY-CoV016 (etesevimab), LY-CoV555 (bamlanivimab), and REGN10987 (imdevimab).
-Each antibody targets a different one of the three main neutralizing epitopes on the RBD: LY-CoV016 targets the class 1 epitope, LY-CoV555 the class 2 epitope, and REGN10987 the class 3 epitope~\citep{barnes2020sars,greaney2021mapping}.
-Because the antibodies have distinct epitopes, they are each escaped by largely distinct sets of mutations: LY-CoV016 is most strongly escaped by mutations at site 417, LY-CoV555 at site 484, and REGN10987 at sites 444 to 446 (Figure~\ref{fig:mini_example}A).
+Each antibody targets a different epitope on the RBD: LY-CoV016 targets the class 1 epitope, LY-CoV555 the class 2 epitope, and REGN10987 the class 3 epitope~\citep{barnes2020sars,greaney2021mapping}.
+Because the antibodies have distinct epitopes, they are escaped by largely distinct sets of mutations: LY-CoV016 is most strongly escaped by mutations at site 417, LY-CoV555 at site 484, and REGN10987 at sites 444--446 (Figure~\ref{fig:mini_example}A).
 
 Now imagine a polyclonal antibody mix consisting of these three antibodies combined at equal potencies.
 We can generate a site-level ``escape map'' for this hypothetical antibody mix simply by averaging the experimentally measured escape maps for the three individual antibodies, yielding the thick black line in Figure~\ref{fig:mini_example}A.
-Because this polyclonal escape map is the average of the three monoclonal antibody escape maps, its largest peaks are at the sites of strongest escape for each of the individual antibodies: sites 417, 484, and 444 to 446.
+Because this polyclonal escape map is the average of the three monoclonal antibody escape maps, its largest peaks are at the sites of strongest escape for each individual antibody: sites 417, 484, and 444--446.
 
 Next imagine removing one antibody from the mix by mutating its epitope.
 Figure~\ref{fig:mini_example}B shows the resulting escape map if LY-CoV555 is ablated, as would occur if site 484 was mutated.
-The thick black line for the antibody mix no longer has peaks at E484 and other sites targeted by LY-CoV555, such as 490.
-Therefore, in this hypothetical polyclonal antibody mix, escape at sites E484 and F490 is correlated since both are targeted by the same antibody.
-However, the polyclonal mix's escape map at sites K417 and N460 is unaffected by mutations that escape LY-CoV555, since they are targeted by a different antibody, LY-CoV016.
-But if we also ablate LY-CoV016 (such as by mutating site 417), then the peaks at 417 and 460 also disappear, and the most remaining peaks are at sites targeted by REGN10987, such as 444 to 446 (Figure~\ref{fig:mini_example}C).
+The thick black line for the antibody mix no longer has peaks at 484 and other sites targeted by LY-CoV555, such as 490.
+Therefore, in this hypothetical polyclonal antibody mix, escape at sites 484 and 490 is correlated since both are targeted by the same antibody.
+However, the polyclonal mix's escape map at sites 417 and 460 is unaffected by mutations that escape LY-CoV555, since they are targeted by a different antibody, LY-CoV016.
+But if we also ablate LY-CoV016 (such as by mutating site 417), then the peaks at 417 and 460 also disappear, and the remaining peaks are at sites targeted by REGN10987, such as 444--446 (Figure~\ref{fig:mini_example}C).
 Of course, if REGN10987 was also ablated such as by mutating site 446, then the polyclonal antibody mix would have no remaining activity.
-(This and other scenarios can be explored using the interactive version of Figure~\ref{fig:mini_example} at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/mini-example-escape-calc/}.)
+This and other scenarios can be explored using the interactive version of Figure~\ref{fig:mini_example} at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/mini-example-escape-calc/}.
 
 \begin{SCfigure*}[][]
 \includegraphics[width=0.71\textwidth]{figures/mini_example/mini_example.pdf} 
@@ -117,7 +117,7 @@ An interactive version of this figure is at \url{https://jbloomlab.github.io/SAR
 
 \subsection{Aggregating deep mutational scanning data for 33 human antibodies yields a realistic escape calculator}
 %The toy example in the previous section illustrates how experimental data for individual antibodies can be combined to yield an escape map for a hypothetical polyclonal antibody mix.
-To create an escape map for an antibody mix that more realistically represents actual human sera, we aggregated previously generated deep mutational scanning data for 33 neutralizing monoclonal antibodies elicited by SARS-CoV-2.
+To create an escape map for an antibody mix that more realistically represents actual human sera, we aggregated previously generated deep mutational scanning data for 33 neutralizing antibodies elicited by SARS-CoV-2.
 These antibodies were isolated from a variety of patient cohorts within the first year of the pandemic (see Methods for details).
 An assumption of the analysis that follows is that an equipotent mixture of these 33 antibodies represents the neutralizing activity of human sera; we emphasize that this assumption is imperfect since in reality the antibodies were chosen for prior study for a variety of ad hoc reasons.
 The escape maps for all the individual antibodies can be interactively interrogated at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/}.
@@ -134,23 +134,43 @@ An interactive version of this figure is at \url{https://jbloomlab.github.io/SAR
 \end{SCfigure*}
 
 The overall polyclonal escape map generated by averaging the data for all 33 antibodies is in Figure \ref{fig:escape_calc}A.
-As in the toy three-antibody example in the previous subsection, there are peaks at  sites 417, 444 to 446, and 484.
-However, the peak at E484 is now larger than any other peak, reflecting the fact that antibodies targeting the class 2 epitope containing E484 are immunodominant in the human antibody response to early SARS-CoV-2 strains~\citep{yuan2020structural,robbiani2020convergent,greaney2021comprehensive,greaney2021mapping}.
-In addition, there are smaller peaks at a variety of sites, reflecting the fact that each antibody has a somewhat idiosyncratic epitope that is slightly differently affected by mutations at specific sites (Figure \ref{fig:escape_calc}A).
+As in the toy three-antibody example in the previous subsection, there are peaks at  sites 417, 484, and 444--446.
+However, the peak at 484 is now larger than any other peak, reflecting the fact that antibodies targeting the class 2 epitope containing E484 are immunodominant in the human antibody response to early SARS-CoV-2 strains~\citep{yuan2020structural,robbiani2020convergent,greaney2021comprehensive,greaney2021mapping}.
+In addition, there are smaller peaks at a variety of other sites, reflecting the fact that each antibody has a somewhat idiosyncratic epitope (Figure \ref{fig:escape_calc}A).
 
 We can follow the principle outlined in the toy example in the previous subsection to calculate the expected polyclonal escape map \emph{after} mutating sites in the RBD.
 Specifically, we reduce the contribution of each antibody by an amount that scales with how strongly that antibody targets each mutated site (see Methods for mathematical details).
 For instance, the blue lines in Figure~\ref{fig:escape_calc}B show the polyclonal escape map after mutating site 484.
 Mutating site 484 obviously drops the contribution of that site, but it also decreases the contribution of other sites such as 490 that are commonly targeted by antibodies with epitopes that include site 484.
-In contrast, mutating site 484 has minimal effect on the polyclonal escape map at sites like 417 or 444 to 446, since those sites are generally targeted by antibodies that are unaffected by mutations at site 484.
+In contrast, mutating site 484 has minimal effect on the polyclonal escape map at sites like 417 or 444--446, since those sites are generally targeted by antibodies that are unaffected by mutations at site 484.
 
 We can also calculate the expected effects of compound mutations.
 Figure~\ref{fig:escape_calc}C shows the polyclonal escape map after mutating all three RBD sites that are changed in the Beta variant (sites 417, 484, and 501).
-This polyclonal escape map has lost contributions not only from the mutated sites, but also sites that tend to form common epitopes with either 417 or 484 (e.g., sites 455, 456, 486, and 490).
-However, the escape map still has major contributions from antibodies targeting sites like 444 to 446, since such antibodies are generally unaffected by mutations at sites 417, 484, or 501.
+This polyclonal escape map has lost contributions not only from the mutated sites, but also sites that form common epitopes with 417 or 484 (e.g., sites 455, 456, 486, and 490).
+However, the escape map still has major contributions from antibodies targeting sites like 444--446, since such antibodies are generally unaffected by mutations at sites 417, 484, or 501.
 
 We recommend the reader explores the interactive escape calculator at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/}, to perform calculations like those in Figure~\ref{fig:escape_calc} for arbitrary combinations of mutated RBD sites.
 Such visual exploration of different combinations of mutations provides an intuitive sense of the antigenic structure of the RBD.
+
+\subsection{The escape calculations correlate well with neutralization assays on SARS-CoV-2 variants}
+We can also define a quantitative score that summarizes the polyclonal antibody activity that remains after an arbitrary combination of RBD mutations.
+This score is defined using the same principle as the site-wise escape calculator in the previous subsection: we reduce the contribution of each antibody by an amount that scales with how strongly it is escaped by each mutated site, and define the overall score as the fraction of all antibody contributions that remain after the mutations (see Methods for details).
+This calculation is implemented in the interactive calculator at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/}, and returns a score that ranges from one (no mutations affect binding of any antibodies) to zero (all antibodies fully escaped).
+
+\begin{SCfigure*}[][]
+\includegraphics[width=0.7\textwidth]{../results/neut_studies/neut_studies.png}
+\caption{Correlation of antibody binding scores from the escape calculator with experimentally measured fold changes in neutralization IC50 values for SARS-CoV-2 variants and mutants.
+The experimental data of \citet{lucas2021impact} was generated using live virus and sera from vaccinated individuals who were (top) or were not (bottom) previously infected with SARS-CoV-2.
+The experimental data of \citet{uriu2021neutralization} and \citet{wang2021antibody} was generated using pseudovirus against convalescent (top) or vaccine (bottom) sera, with the vaccine sera from the Pfizer BNT162b2 or Moderna mRNA-1273 vaccines, respectively. 
+The plotted fold changes in neutralization represent the geometric means over all subjects in each cohort.
+}
+\label{fig:neut_studies}
+\end{SCfigure*}
+
+To test how these escape-calculator scores compare to actual experimentally measured neutralization titers, we collated neutralization data from three previously published studies~\citep{lucas2021impact,uriu2021neutralization,wang2021antibody}, each of which characterized sera from two patient cohorts against a variety of SARS-CoV-2 variants and mutants.
+One can imagine many reasons why the escape-calculator scores might differ from the real neutralization titers: the calculator only considers RBD mutations and neglects those in other domains such as the NTD, the antibodies used by the calculator might not accurately reflect the real mix in polyclonal sera, etc.
+But despite all these potential caveats, the escape-calculator scores correlate quite well with the measured neutralization titers across all studies and cohorts (Figure~\ref{fig:neut_studies}).
+Therefore, the simple and intuitive approach used by the calculator seems to accurately reflect the dominant features of polyclonal antibody escape in the RBD.
 
 \subsection{}
 Omicron is 0.2.
