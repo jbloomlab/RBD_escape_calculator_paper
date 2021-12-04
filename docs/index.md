@@ -1,11 +1,14 @@
 # Interactive figures related to the paper "An antibody-escape calculator for mutations to the SARS-CoV-2 receptor-binding domain"
 
-Below are interactive versions of the figures from the paper created using [Altair](https://altair-viz.github.io/):
+Below are interactive versions of the figures from the paper.
+They allow mousing over points and other interactive operations.
 
-- **Figure 1**: see the interactive mini-example calculator [here](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/mini-example-escape-calc/).
+While the escape calculator at [https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/) will be updated with new deep mutational scanning data as it becomes available, the figures here will not be updated and will stay at versions matching those in the paper.
 
-- **Figure 2**: see the full interactive calculator [here](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/) (note this may be updated in the future with new data beyond that included in the paper).
+- <a href="mini_example_escape_calc.html" title="mini_example_escape_calc.html">Figure 1</a>
 
-- **Figure 3**: an interactive version of the figure that allows mousing over points for details is <a href="neut_studies.html" title="neut_studies.html">here.</a>
+- <a href="escape_calc_chart.html" title="escape_calc_chart.html">Figure 2</a>
 
-- **Figure 4**: an interactive version of **Figure 4A** that allows mousing over points for details is <a href="variants.html" title="variants.html">here.</a> **Figure 4B** can be generated using the full interactive calculator [here](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/) (note this may be updated in the future with new data beyond that included in the paper).
+- <a href="neut_studies.html" title="neut_studies.html">Figure 3</a>
+
+- <a href="variants.html" title="variants.html">Figure 4A</a> and <a href="escape_calc_chart.html" title="escape_calc_chart.html">Figure 4B</a>

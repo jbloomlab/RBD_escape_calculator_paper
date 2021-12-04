@@ -17,7 +17,22 @@ rule all:
         'results/variants/variants.html',
         'results/variants/variants.png',
         'results/variants/variants.tex',
-        'docs/neut_studies.html'
+        'docs/neut_studies.html',
+        'docs/variants.html',
+        'docs/mini_example_escape_calc.html',
+        'docs/escape_calc_chart.html',
+
+rule get_html:
+    params:
+        'https://raw.githubusercontent.com/jbloomlab/SARS2_RBD_Ab_escape_maps/bioRxiv_v1/docs/_includes/mini_example_escape_calc.html',
+        'https://raw.githubusercontent.com/jbloomlab/SARS2_RBD_Ab_escape_maps/bioRxiv_v1/docs/_includes/escape_calc_chart.html'
+    output:
+        ['docs/mini_example_escape_calc.html',
+         'docs/escape_calc_chart.html']
+    run:
+        for url_in, f_out in zip(params, output):
+            print(f"Getting {url_in=} to {f_out=}")
+            urllib.request.urlretrieve(url_in, f_out)
 
 rule cp_html:
     input:
