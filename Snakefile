@@ -13,6 +13,17 @@ rule all:
     input:
         'results/neut_studies/neut_studies.html',
         'results/neut_studies/neut_studies.png',
+        'results/variants/variants.html',
+        'results/variants/variants.png',
+        'results/variants/variants.tex',
+
+rule plot_variants:
+    input: csv='data/variant_RBD_muts.csv'
+    output:
+        html='results/variants/variants.html',
+        png='results/variants/variants.png',
+        table='results/variants/variants.tex',
+    notebook: 'plot_variants.py.ipynb'
 
 rule plot_neut_studies:
     input:
