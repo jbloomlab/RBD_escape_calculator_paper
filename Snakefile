@@ -8,10 +8,6 @@ import pandas as pd
 
 import pdfplumber
 
-import PIL
-
-import pytesseract
-
 
 rule all:
     input:
