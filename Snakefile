@@ -3,6 +3,7 @@
 
 import io
 import urllib.request
+import shutil
 
 import pandas as pd
 
@@ -16,6 +17,18 @@ rule all:
         'results/variants/variants.html',
         'results/variants/variants.png',
         'results/variants/variants.tex',
+        'docs/neut_studies.html'
+
+rule cp_html:
+    input:
+        ['results/neut_studies/neut_studies.html',
+         'results/variants/variants.html']
+    output:
+        ['docs/neut_studies.html',
+         'docs/variants.html']
+    run:
+        for f_in, f_out in zip(input, output):
+            shutil.copy(f_in, f_out)
 
 rule plot_variants:
     input: csv='data/variant_RBD_muts.csv'

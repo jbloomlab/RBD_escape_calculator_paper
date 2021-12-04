@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-cbe714bc495207829d85148314183fae"}, "mark": {"type": "point", "filled": true, "size": 70}, "encoding": {"tooltip": [{"type": "nominal", "field": "variant"}, {"type": "nominal", "field": "mutated RBD sites"}, {"type": "quantitative", "field": "calculated binding score", "format": ".2f"}], "x": {"type": "nominal", "field": "variant", "sort": ["Wuhan-Hu-1", "Alpha", "Delta", "Lambda", "Mu", "Beta", "Gamma", "Omicron", "PMS20"]}, "y": {"type": "quantitative", "field": "calculated binding score", "scale": {"domain": [0.16268617395012858, 1.0], "nice": false, "type": "log"}}}, "height": 200, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-cbe714bc495207829d85148314183fae": [{"variant": "Wuhan-Hu-1", "mutated RBD sites": "", "mut_list": [], "calculated binding score": 1.0}, {"variant": "Alpha", "mutated RBD sites": "501", "mut_list": [501], "calculated binding score": 0.932350824885985}, {"variant": "Beta", "mutated RBD sites": "417 484 501", "mut_list": [417, 484, 501], "calculated binding score": 0.40587052285326763}, {"variant": "Gamma", "mutated RBD sites": "417 484 501", "mut_list": [417, 484, 501], "calculated binding score": 0.40587052285326763}, {"variant": "Delta", "mutated RBD sites": "452 478", "mut_list": [452, 478], "calculated binding score": 0.8266777394809641}, {"variant": "Lambda", "mutated RBD sites": "452 490", "mut_list": [452, 490], "calculated binding score": 0.6230022395760562}, {"variant": "Mu", "mutated RBD sites": "346 484 501", "mut_list": [346, 484, 501], "calculated binding score": 0.437855592501803}, {"variant": "Omicron", "mutated RBD sites": "339 371 373 375 417 440 446 477 478 484 493 496 498 501 505", "mut_list": [339, 371, 373, 375, 417, 440, 446, 477, 478, 484, 493, 496, 498, 501, 505], "calculated binding score": 0.20066988947524164}, {"variant": "PMS20", "mutated RBD sites": "346 417 440 445 455 475 484 501", "mut_list": [346, 417, 440, 445, 455, 475, 484, 501], "calculated binding score": 0.19139549876485715}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
