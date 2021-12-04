@@ -166,7 +166,7 @@ The plotted fold changes in neutralization represent the geometric means over al
 \label{fig:neut_studies}
 \end{SCfigure*}
 
-To test how these escape-calculator scores compare to experimentally measured neutralization titers, we collated neutralization data from three previously published studies~\citep{lucas2021impact,uriu2021neutralization,wang2021antibody,}, each of which characterized sera from two patient cohorts against a variety of SARS-CoV-2 variants and mutants.
+To test how these escape-calculator scores compare to experimentally measured neutralization titers, we collated neutralization data from three previously published studies~\citep{lucas2021impact,uriu2021neutralization,wang2021antibody}, each of which characterized sera from two patient cohorts against a variety of SARS-CoV-2 variants and mutants.
 One can imagine many reasons why the escape-calculator scores might differ from the real neutralization titers: the calculator only considers RBD mutations, the antibodies used by the calculator might not accurately reflect the real mix in polyclonal sera, etc.
 But despite all these potential caveats, the escape-calculator scores correlate quite well with the measured neutralization titers across all studies and cohorts (Figure~\ref{fig:neut_studies}).
 Therefore, the simple and intuitive approach used by the calculator seems to accurately reflect the dominant features of polyclonal antibody escape in the RBD.
@@ -226,27 +226,86 @@ For this reason, we expect to continue adding to the data used by the escape cal
 
 \section{Methods}
 \subsection{Code and data availability}
+The most up-to-date code and data used to implement the escape calculator are at \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps}, and the version described in this paper are at \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps/tree/bioRxiv_v1}.
 
-\url{https://altair-viz.github.io/} Altair~\citep{VanderPlas2018}, which is in turn built upon Vega-Lite~\citep{Satyanarayan2017}.
+The data used by the escape calculator are at \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps/blob/main/processed_data/escape_calculator_data.csv}, and the version used for this paper are at \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps/blob/bioRxiv_v1/processed_data/escape_calculator_data.csv}.
 
-\subsection{Mutations in Omicron variant and spike polymutant PMS20}
-Omicron has mutations at the following 15 RBD sites: 339, 371, 373, 375, 417, 440, 446, 477, 478, 484, 493, 496, 498, 501, and 505.
-PMS20 has mutations at the following 8 RBD sites: 346, 417, 440, 445, 455, 475, 484, and 501.
+\subsection{Deep mutational scanning data used by the calculator}
+The experimental data used by the escape calculator are drawn from seven previously published deep mutational scanning studies~\citep{greaney2021complete,greaney2021mapping,starr2021prospective,starr2021complete,starr2021sars,dong2021genetic,tortorici2021broad} and one unpublished dataset available at \url{https://github.com/jbloomlab/SARS-CoV-2-RBD_MAP_COV2-2955}.
+In total, these studies contain data for 36 monoclonal antibodies.
+Three of these antibodies (CR3022, S304, and S309) were elicited by infection with SARS-CoV-1 and so are excluded from the datasets used for the calculations in this paper, although the calculator has an option (\texttt{eliciting\_virus}) that allows optional inclusion of these antibodies.
+The majority of the antibodies were originally isolated from cohorts of individuals infected with SARS-CoV-2 in the first half of 2020, and where initially characterized by the Crowe lab~\citep{zost2020potently}, Nussenzweig lab~\citep{robbiani2020convergent}, or Vir Biotechnology~\citep{piccoli2020mapping}, with a few additional antibodies coming from commercial synthesis based on sequences reported by Regeneron, Eli Lilly, or their collaborators~\citep{hansen2020studies,jones2021neutralizing,shi2020human}.
+The full deep mutational scanning data for all these antibodies are interactively displayed at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/} and available in raw form at \url{https://raw.githubusercontent.com/jbloomlab/SARS2_RBD_Ab_escape_maps/main/processed_data/escape_data.csv} (see \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps/blob/bioRxiv_v1/processed_data/escape_data.csv} for a stable version of the raw data corresponding to that used in this paper).
 
+The deep mutational scanning measures an escape fraction for each tolerated RBD mutation against each antibody, which represents an estimate of how completely that mutation escapes antibody binding~\citep{greaney2021complete}.
+We summarize the mutation-level escape fractions into site-level measurements in two ways: taking the sum of the mutation escape fractions at each site, or taking the mean of the mutation escape fractions at each site.
+The results reported in this paper use the sums as the site-level metric, although the calculator has an option (\texttt{escape\_metric}) to use the mean instead.
+We also normalize the site-level escape metrics for each antibody to account for different strengths of antibody selection in different experiments using the approach described in \citet{greaney2021comprehensive} and implemented in \url{https://jbloomlab.github.io/dmslogo/dmslogo.utils.html#dmslogo.utils.AxLimSetter} with \texttt{min\_upperlim=1} and \texttt{max\_from\_quantile=(0.5, 0.05)}: essentially this corresponds to scaling the site escape values for each antibody so that a value of one corresponds to the larger of the maximum escape at a site or 20 times the median value across sites.
+The results reported in this paper use the normalized site-level metrics, although the calculator has an option (\texttt{escape\_values\_normalized}) to also use the non-normalized values.
+
+\subsection{Calculation of the impact of mutations}
+The escape calculator determines the impact of mutating sites by calculating how much each antibody is escaped by mutations at each site, and adjusting its contribution to the overall polyclonal mix accordingly.
+
+Specifically, for each antibody $a$ we have a deep mutational scanning measurement $x_{a,r}$ of how much mutating $r$ escapes that antibody.
+In the absence of any mutations, the overall escape map shown for the polyclonal mix is simply the mean over all antibodies, $\frac{1}{A}\sum_a x_{a,r}$ where $A$ is the number of antibodies.
+
+Let $\mathcal{M}$ be the set of sites that are mutated.
+Then for each antibody we compute the binding retained as $b_a\left(\mathcal{M}\right) = \left(\prod\limits_{r \in \mathcal{M}} \frac{\max_{r'}\left(x_{a,r'}\right) - x_{a,r}}{\max_{r'}\left(x_{a,r'}\right)}\right)^s$. 
+Essentially, this equation means that if the RBD is mutated at a strong site of escape for an antibody $a$, much if the binding is lost (if it is the strongest site of escape, all binding is lost).
+The variable $s$ represents how dramatically binding is lost for mutations at sites of escape that are not the strongest: larger values of $s$ means mutations at even moderate sites of escape reduce binding a lot.
+In this paper we report calculations with $s = 2$, although the calculator has an option (\texttt{mutation\_escape\_strength}) to choose other values.
+We then define the escape map after the mutations $\mathcal{M}$ as $\frac{1}{A}\sum_a x_{a,r} b_a\left(\mathcal{M}\right)$.
+The calculator shows the escape map with no mutations in gray, and that after mutations in blue.
+
+The overall antibody binding scores represent the fraction of antibodies that still bind, and are calculated simply as $\frac{1}{A}\sum_a b_a\left(\mathcal{M}\right)$.
+
+\subsection{Implementation of interactive calculator}
+The interactive calculator at \url{https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/} is imlemented using Altair (\url{https://altair-viz.github.io/})~\citep{VanderPlas2018}, which is in turn built upon Vega-Lite~\citep{Satyanarayan2017}.
+
+\subsection{Python module with batch-mode calculator}
+A Python module that implements the calculations is at \url{https://github.com/jbloomlab/SARS2_RBD_Ab_escape_maps/blob/main/bindingcalculator.py}, and has all the same options as the interactive calculator.
+
+\subsection{Compilation of neutralization titers from the literature}
+For Figure~\ref{fig:neut_studies}, we compiled neutralization data from three published studies on SARS-CoV-2 variants and mutants~\citep{lucas2021impact,uriu2021neutralization,wang2021antibody}.
+For each study cohort, we computed the geometric mean fold change in neutralization titer over all subjects.
+The numerical compiled data are at \url{https://github.com/jbloomlab/RBD_escape_calculator_paper/tree/main/results/neut_studies}.
+
+\subsection{Mutations in SARS-CoV-2 variants}
+For Figure~\ref{fig:Omicron}, the definitions of which RBD sites are mutated in each variant are shown in Table~\ref{tab:variants}.
+\begin{table}[h]
+{\footnotesize
+\begin{tabular}{ll}
+\toprule
+   variant &                                           mutated RBD sites \\
+\midrule
+Wuhan-Hu-1 &                                                             \\
+     Alpha &                                                         501 \\
+      Beta &                                                 417 484 501 \\
+     Gamma &                                                 417 484 501 \\
+     Delta &                                                     452 478 \\
+    Lambda &                                                     452 490 \\
+        Mu &                                                 346 484 501 \\
+   Omicron & 339 371 373 375 417 440 446 477 478 484 493 496 498 501 505 \\
+     PMS20 &                             346 417 440 445 455 475 484 501 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Mutated RBD sites in SARS-CoV-2 variants.}
+\label{tab:variants}
+\end{table}
 
 \section{Acknowledgments}
-We thank our collaborators in the Crowe lab, Nussenzweig lab, Bjorkman lab, and at Vir Biotechnology for sharing the antibodies that were used in prior published studies to generate the deep mutational scanning data re-analyzed here.
-We thank researchers in South Africa for rapidly sharing sequence information about the Omicron variant to enable the analyses in the last section of the results.
+We thank collaborators in the Crowe lab, Nussenzweig lab, Bjorkman lab, and at Vir Biotechnology for sharing the antibodies that were used in prior published studies to generate the deep mutational scanning data aggregated here.
+We thank the Moyo and de Oliveira labs and other researchers in South Africa and Botswana for rapidly sharing information about the Omicron variant to enable the analyses in the last section of the results.
 This work was supported in part by the NIH/NIAID under R01AI141707 (to JDB) and T32AI083203 (to AJG).
 The work was also supported by the Gates Foundation grant INV-004949 to JDB.
 TNS is a Howard Hughes Medical Institute Fellow of the Damon Runyon Cancer Research Foundation.
 JDB is an Investigator of the Howard Hughes Medical Institute.
 
 \section{Competing interests}
-JDB consults for Moderna and Flagship Labs 77, and is an inventor on a Fred Hutch licensed patents related to deep mutational scanning of viral proteins.
-
-}
+JDB consults for Moderna, Flagship Labs 77 and Oncorus.
+JDB is an inventor on a Fred Hutch licensed patents related to deep mutational scanning of viral proteins.
 
 \bibliography{references}
-
+}
 \end{document}

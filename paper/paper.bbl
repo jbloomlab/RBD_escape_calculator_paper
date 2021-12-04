@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{30}
 
 \bibitem[{Barnes {\em et~al.\/}}(2020){Barnes, Jette, Abernathy, Dam, Esswein,
   Gristick, Malyutin, Sharaf, Huey-Tubman, Lee, {\em
@@ -11,7 +11,7 @@
   Cabel, Binshtein, Sutton, Rodriguez, Day, {\em
   et~al.\/}}]{chen2021convergent}
 {Chen, E.~C., P.~Gilchuk, S.~J. Zost, N.~Suryadevara, E.~S. Winkler, {\em
-  et~al.\/}}, 2021 Convergent antibody responses to the sars-cov-2 spike
+  et~al.\/}}, 2021 Convergent antibody responses to the {SARS-CoV-2} spike
   protein in convalescent and vaccinated individuals. Cell Reports {\bf 36}:
   109604.
 
@@ -22,6 +22,13 @@
 \bibitem[{de~Oliveira}(2021)]{deoliveira2021tweet}
 {de~Oliveira, T.}, 2021
   \url{https://twitter.com/Tuliodna/status/1463911554538160130}.
+
+\bibitem[{Dong {\em et~al.\/}}(2021){Dong, Zost, Greaney, Starr, Dingens, Chen,
+  Chen, Case, Sutton, Gilchuk, {\em et~al.\/}}]{dong2021genetic}
+{Dong, J., S.~J. Zost, A.~J. Greaney, T.~N. Starr, A.~S. Dingens, {\em
+  et~al.\/}}, 2021 Genetic and structural basis for {SARS-CoV-2} variant
+  neutralization by a two-antibody cocktail. Nature Microbiology {\bf 6}:
+  1233--1244.
 
 \bibitem[{Eguia {\em et~al.\/}}(2021){Eguia, Crawford, Stevens-Ayers,
   Kelnhofer-Millevolte, Greninger, Englund, Boeckh, {\rm and}
@@ -40,7 +47,7 @@
 {Greaney, A.~J., A.~N. Loes, K.~H. Crawford, T.~N. Starr, K.~D. Malone, {\em
   et~al.\/}}, 2021{a} Comprehensive mapping of mutations in the {SARS-CoV-2}
   receptor-binding domain that affect recognition by polyclonal human plasma
-  antibodies. Cell host \& microbe {\bf 29}: 463--476.
+  antibodies. Cell Host \& Microbe {\bf 29}: 463--476.
 
 \bibitem[{Greaney {\em et~al.\/}}(2021{b}){Greaney, Starr, Barnes, Weisblum,
   Schmidt, Caskey, Gaebler, Cho, Agudelo, Finkin, {\em
@@ -53,21 +60,35 @@
 \bibitem[{Greaney {\em et~al.\/}}(2021{c}){Greaney, Starr, Eguia, Loes, Khan,
   Karim, Cele, Bowen, Logue, Corti, {\em et~al.\/}}]{greaney2021sars}
 {Greaney, A.~J., T.~N. Starr, R.~T. Eguia, A.~N. Loes, K.~Khan, {\em
-  et~al.\/}}, 2021{c} A sars-cov-2 variant elicits an antibody response with a
-  shifted immunodominance hierarchy. bioRxiv {\bf 2021.10.12.464114}.
+  et~al.\/}}, 2021{c} A {SARS-CoV-2} variant elicits an antibody response with
+  a shifted immunodominance hierarchy. bioRxiv {\bf 2021.10.12.464114}.
 
 \bibitem[{Greaney {\em et~al.\/}}(2021{d}){Greaney, Starr, Gilchuk, Zost,
   Binshtein, Loes, Hilton, Huddleston, Eguia, Crawford, {\em
   et~al.\/}}]{greaney2021complete}
 {Greaney, A.~J., T.~N. Starr, P.~Gilchuk, S.~J. Zost, E.~Binshtein, {\em
   et~al.\/}}, 2021{d} Complete mapping of mutations to the {SARS-CoV-2} spike
-  receptor-binding domain that escape antibody recognition. Cell host \&
-  microbe {\bf 29}: 44--57.
+  receptor-binding domain that escape antibody recognition. Cell Host \&
+  Microbe {\bf 29}: 44--57.
+
+\bibitem[{Hansen {\em et~al.\/}}(2020){Hansen, Baum, Pascal, Russo, Giordano,
+  Wloga, Fulton, Yan, Koon, Patel, {\em et~al.\/}}]{hansen2020studies}
+{Hansen, J., A.~Baum, K.~E. Pascal, V.~Russo, S.~Giordano, {\em et~al.\/}},
+  2020 Studies in humanized mice and convalescent humans yield a {SARS-CoV-2}
+  antibody cocktail. Science {\bf 369}: 1010--1014.
+
+\bibitem[{Jones {\em et~al.\/}}(2021){Jones, Brown-Augsburger, Corbett,
+  Westendorf, Davies, Cujec, Wiethoff, Blackbourne, Heinz, Foster, {\em
+  et~al.\/}}]{jones2021neutralizing}
+{Jones, B.~E., P.~L. Brown-Augsburger, K.~S. Corbett, K.~Westendorf, J.~Davies,
+  {\em et~al.\/}}, 2021 The neutralizing antibody, {LY-CoV555}, protects
+  against {SARS-CoV-2} infection in nonhuman primates. Science Translational
+  Medicine {\bf 13}.
 
 \bibitem[{Kistler {\rm and} Bedford}(2021)]{kistler2021evidence}
 {Kistler, K.~E. {\rm and} T.~Bedford}, 2021 Evidence for adaptive evolution in
   the receptor-binding domain of seasonal coronaviruses {OC43} and {229E}.
-  Elife {\bf 10}: e64509.
+  eLife {\bf 10}: e64509.
 
 \bibitem[{Lucas {\em et~al.\/}}(2021){Lucas, Vogels, Yildirim, Rothman, Lu,
   Monteiro, Gehlhausen, Campbell, Silva, Tabachnikova, {\em
@@ -109,18 +130,38 @@
   et~al.\/}}, 2021 High genetic barrier to {SARS-CoV-2} polyclonal neutralizing
   antibody escape. Nature pp. 1--5.
 
-\bibitem[{Starr {\em et~al.\/}}(2021{a}){Starr, Greaney, Addetia, Hannon,
+\bibitem[{Shi {\em et~al.\/}}(2020){Shi, Shan, Duan, Chen, Liu, Song, Song, Bi,
+  Han, Wu, {\em et~al.\/}}]{shi2020human}
+{Shi, R., C.~Shan, X.~Duan, Z.~Chen, P.~Liu, {\em et~al.\/}}, 2020 A human
+  neutralizing antibody targets the receptor-binding site of sars-cov-2. Nature
+  {\bf 584}: 120--124.
+
+\bibitem[{Starr {\em et~al.\/}}(2021{a}){Starr, Czudnochowski, Liu, Zatta,
+  Park, Addetia, Pinto, Beltramello, Hernandez, Greaney, {\em
+  et~al.\/}}]{starr2021sars}
+{Starr, T.~N., N.~Czudnochowski, Z.~Liu, F.~Zatta, Y.-J. Park, {\em et~al.\/}},
+  2021{a} {SARS-CoV-2 RBD} antibodies that maximize breadth and resistance to
+  escape. Nature {\bf 597}: 97--102.
+
+\bibitem[{Starr {\em et~al.\/}}(2021{b}){Starr, Greaney, Addetia, Hannon,
   Choudhary, Dingens, Li, {\rm and} Bloom}]{starr2021prospective}
 {Starr, T.~N., A.~J. Greaney, A.~Addetia, W.~W. Hannon, M.~C. Choudhary, {\em
-  et~al.\/}}, 2021{a} Prospective mapping of viral mutations that escape
+  et~al.\/}}, 2021{b} Prospective mapping of viral mutations that escape
   antibodies used to treat {COVID-19}. Science {\bf 371}: 850--854.
 
-\bibitem[{Starr {\em et~al.\/}}(2021{b}){Starr, Greaney, Dingens, {\rm and}
+\bibitem[{Starr {\em et~al.\/}}(2021{c}){Starr, Greaney, Dingens, {\rm and}
   Bloom}]{starr2021complete}
-{Starr, T.~N., A.~J. Greaney, A.~S. Dingens, {\rm and} J.~D. Bloom}, 2021{b}
+{Starr, T.~N., A.~J. Greaney, A.~S. Dingens, {\rm and} J.~D. Bloom}, 2021{c}
   {Complete map of SARS-CoV-2 RBD mutations that escape the monoclonal antibody
   LY-CoV555 and its cocktail with LY-CoV016}. Cell Reports Medicine {\bf 2}:
   100255.
+
+\bibitem[{Tortorici {\em et~al.\/}}(2021){Tortorici, Czudnochowski, Starr,
+  Marzi, Walls, Zatta, Bowen, Jaconi, Di~Iulio, Wang, {\em
+  et~al.\/}}]{tortorici2021broad}
+{Tortorici, M.~A., N.~Czudnochowski, T.~N. Starr, R.~Marzi, A.~C. Walls, {\em
+  et~al.\/}}, 2021 Broad sarbecovirus neutralization by a human monoclonal
+  antibody. Nature {\bf 597}: 103--108.
 
 \bibitem[{Uriu {\em et~al.\/}}(2021){Uriu, Kimura, Shirakawa, Takaori-Kondo,
   Nakada, Kaneda, Nakagawa, {\rm and} Sato}]{uriu2021neutralization}
@@ -146,5 +187,12 @@
 {Yuan, M., H.~Liu, N.~C. Wu, C.-C.~D. Lee, X.~Zhu, {\em et~al.\/}}, 2020
   Structural basis of a shared antibody response to {SARS-CoV-2}. Science {\bf
   369}: 1119--1123.
+
+\bibitem[{Zost {\em et~al.\/}}(2020){Zost, Gilchuk, Case, Binshtein, Chen,
+  Nkolola, Sch{\"a}fer, Reidy, Trivette, Nargi, {\em
+  et~al.\/}}]{zost2020potently}
+{Zost, S.~J., P.~Gilchuk, J.~B. Case, E.~Binshtein, R.~E. Chen, {\em
+  et~al.\/}}, 2020 Potently neutralizing and protective human antibodies
+  against {SARS-CoV-2}. Nature {\bf 584}: 443--449.
 
 \end{thebibliography}
