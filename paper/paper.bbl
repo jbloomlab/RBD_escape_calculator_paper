@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{23}
 
 \bibitem[{Barnes {\em et~al.\/}}(2020){Barnes, Jette, Abernathy, Dam, Esswein,
   Gristick, Malyutin, Sharaf, Huey-Tubman, Lee, {\em
@@ -7,6 +7,22 @@
   et~al.\/}}, 2020 {SARS-CoV-2} neutralizing antibody structures inform
   therapeutic strategies. Nature {\bf 588}: 682--687.
 
+\bibitem[{Chen {\em et~al.\/}}(2021){Chen, Gilchuk, Zost, Suryadevara, Winkler,
+  Cabel, Binshtein, Sutton, Rodriguez, Day, {\em
+  et~al.\/}}]{chen2021convergent}
+{Chen, E.~C., P.~Gilchuk, S.~J. Zost, N.~Suryadevara, E.~S. Winkler, {\em
+  et~al.\/}}, 2021 Convergent antibody responses to the sars-cov-2 spike
+  protein in convalescent and vaccinated individuals. Cell Reports {\bf 36}:
+  109604.
+
+\bibitem[{Cobey {\rm and} Hensley}(2017)]{cobey2017immune}
+{Cobey, S. {\rm and} S.~E. Hensley}, 2017 Immune history and influenza virus
+  susceptibility. Current opinion in virology {\bf 22}: 105--111.
+
+\bibitem[{de~Oliveira}(2021)]{deoliveira2021tweet}
+{de~Oliveira, T.}, 2021
+  \url{https://twitter.com/Tuliodna/status/1463911554538160130}.
+
 \bibitem[{Eguia {\em et~al.\/}}(2021){Eguia, Crawford, Stevens-Ayers,
   Kelnhofer-Millevolte, Greninger, Englund, Boeckh, {\rm and}
   Bloom}]{eguia2021human}
@@ -14,10 +30,15 @@
   Greninger, {\em et~al.\/}}, 2021 A human coronavirus evolves antigenically to
   escape antibody immunity. PLoS Pathogens {\bf 17}: e1009453.
 
+\bibitem[{Einav {\rm and} Bloom}(2020)]{einav2020two}
+{Einav, T. {\rm and} J.~D. Bloom}, 2020 When two are better than one: Modeling
+  the mechanisms of antibody mixtures. PLoS Computational Biology {\bf 16}:
+  e1007830.
+
 \bibitem[{Greaney {\em et~al.\/}}(2021{a}){Greaney, Loes, Crawford, Starr,
   Malone, Chu, {\rm and} Bloom}]{greaney2021comprehensive}
 {Greaney, A.~J., A.~N. Loes, K.~H. Crawford, T.~N. Starr, K.~D. Malone, {\em
-  et~al.\/}}, 2021{a} Comprehensive mapping of mutations in the sars-cov-2
+  et~al.\/}}, 2021{a} Comprehensive mapping of mutations in the {SARS-CoV-2}
   receptor-binding domain that affect recognition by polyclonal human plasma
   antibodies. Cell host \& microbe {\bf 29}: 463--476.
 
@@ -29,11 +50,17 @@
   binding by different classes of antibodies. Nature communications {\bf 12}:
   1--14.
 
-\bibitem[{Greaney {\em et~al.\/}}(2021{c}){Greaney, Starr, Gilchuk, Zost,
+\bibitem[{Greaney {\em et~al.\/}}(2021{c}){Greaney, Starr, Eguia, Loes, Khan,
+  Karim, Cele, Bowen, Logue, Corti, {\em et~al.\/}}]{greaney2021sars}
+{Greaney, A.~J., T.~N. Starr, R.~T. Eguia, A.~N. Loes, K.~Khan, {\em
+  et~al.\/}}, 2021{c} A sars-cov-2 variant elicits an antibody response with a
+  shifted immunodominance hierarchy. bioRxiv {\bf 2021.10.12.464114}.
+
+\bibitem[{Greaney {\em et~al.\/}}(2021{d}){Greaney, Starr, Gilchuk, Zost,
   Binshtein, Loes, Hilton, Huddleston, Eguia, Crawford, {\em
   et~al.\/}}]{greaney2021complete}
 {Greaney, A.~J., T.~N. Starr, P.~Gilchuk, S.~J. Zost, E.~Binshtein, {\em
-  et~al.\/}}, 2021{c} Complete mapping of mutations to the sars-cov-2 spike
+  et~al.\/}}, 2021{d} Complete mapping of mutations to the {SARS-CoV-2} spike
   receptor-binding domain that escape antibody recognition. Cell host \&
   microbe {\bf 29}: 44--57.
 
@@ -46,29 +73,40 @@
   Monteiro, Gehlhausen, Campbell, Silva, Tabachnikova, {\em
   et~al.\/}}]{lucas2021impact}
 {Lucas, C., C.~B. Vogels, I.~Yildirim, J.~E. Rothman, P.~Lu, {\em et~al.\/}},
-  2021 Impact of circulating sars-cov-2 variants on mrna vaccine-induced
+  2021 Impact of circulating {SARS-CoV-2} variants on {mRNA} vaccine-induced
   immunity. Nature pp. 1--7.
+
+\bibitem[{{NGS-SA}}(2021)]{ngs-sa2021update}
+{{NGS-SA}}, 2021 {SARS-CoV-2 sequencing update 26 November 2021 by the Network
+  for Genomic Surveillance in South Africa}.
+  \url{https://www.nicd.ac.za/wp-content/uploads/2021/11/Update-of-SA-sequencing-data-from-GISAID-26-Nov_Final.pdf}.
 
 \bibitem[{Piccoli {\em et~al.\/}}(2020){Piccoli, Park, Tortorici,
   Czudnochowski, Walls, Beltramello, Silacci-Fregni, Pinto, Rosen, Bowen, {\em
   et~al.\/}}]{piccoli2020mapping}
 {Piccoli, L., Y.-J. Park, M.~A. Tortorici, N.~Czudnochowski, A.~C. Walls, {\em
   et~al.\/}}, 2020 Mapping neutralizing and immunodominant sites on the
-  sars-cov-2 spike receptor-binding domain by structure-guided high-resolution
-  serology. Cell {\bf 183}: 1024--1042.
+  {SARS-CoV-2} spike receptor-binding domain by structure-guided
+  high-resolution serology. Cell {\bf 183}: 1024--1042.
 
 \bibitem[{Robbiani {\em et~al.\/}}(2020){Robbiani, Gaebler, Muecksch, Lorenzi,
   Wang, Cho, Agudelo, Barnes, Gazumyan, Finkin, {\em
   et~al.\/}}]{robbiani2020convergent}
 {Robbiani, D.~F., C.~Gaebler, F.~Muecksch, J.~C. Lorenzi, Z.~Wang, {\em
-  et~al.\/}}, 2020 Convergent antibody responses to sars-cov-2 in convalescent
-  individuals. Nature {\bf 584}: 437--442.
+  et~al.\/}}, 2020 Convergent antibody responses to {SARS-CoV-2} in
+  convalescent individuals. Nature {\bf 584}: 437--442.
+
+\bibitem[{Satyanarayan {\em et~al.\/}}(2017){Satyanarayan, Moritz,
+  Wongsuphasawat, {\rm and} Heer}]{Satyanarayan2017}
+{Satyanarayan, A., D.~Moritz, K.~Wongsuphasawat, {\rm and} J.~Heer}, 2017
+  {Vega-Lite}: A grammar of interactive graphics. IEEE transactions on
+  visualization and computer graphics {\bf 23}: 341--350.
 
 \bibitem[{Schmidt {\em et~al.\/}}(2021){Schmidt, Weisblum, Rutkowska, Poston,
   DaSilva, Zhang, Bednarski, Cho, Schaefer-Babajew, Gaebler, {\em
   et~al.\/}}]{schmidt2021high}
 {Schmidt, F., Y.~Weisblum, M.~Rutkowska, D.~Poston, J.~DaSilva, {\em
-  et~al.\/}}, 2021 High genetic barrier to sars-cov-2 polyclonal neutralizing
+  et~al.\/}}, 2021 High genetic barrier to {SARS-CoV-2} polyclonal neutralizing
   antibody escape. Nature pp. 1--5.
 
 \bibitem[{Starr {\em et~al.\/}}(2021{a}){Starr, Greaney, Addetia, Hannon,
@@ -87,19 +125,26 @@
 \bibitem[{Uriu {\em et~al.\/}}(2021){Uriu, Kimura, Shirakawa, Takaori-Kondo,
   Nakada, Kaneda, Nakagawa, {\rm and} Sato}]{uriu2021neutralization}
 {Uriu, K., I.~Kimura, K.~Shirakawa, A.~Takaori-Kondo, T.-a. Nakada, {\em
-  et~al.\/}}, 2021 Neutralization of the sars-cov-2 mu variant by convalescent
-  and vaccine serum. New England Journal of Medicine .
+  et~al.\/}}, 2021 Neutralization of the {SARS-CoV-2 Mu} variant by
+  convalescent and vaccine serum. New England Journal of Medicine .
+
+\bibitem[{VanderPlas {\em et~al.\/}}(2018){VanderPlas, Granger, Heer, Moritz,
+  Wongsuphasawat, Satyanarayan, Lees, Timofeev, Welsh, {\rm and}
+  Sievert}]{VanderPlas2018}
+{VanderPlas, J., B.~Granger, J.~Heer, D.~Moritz, K.~Wongsuphasawat, {\em
+  et~al.\/}}, 2018 Altair: Interactive statistical visualizations for {Python}.
+  Journal of Open Source Software {\bf 3}: 1057.
 
 \bibitem[{Wang {\em et~al.\/}}(2021){Wang, Nair, Liu, Iketani, Luo, Guo, Wang,
   Yu, Zhang, Kwong, {\em et~al.\/}}]{wang2021antibody}
 {Wang, P., M.~S. Nair, L.~Liu, S.~Iketani, Y.~Luo, {\em et~al.\/}}, 2021
-  Antibody resistance of sars-cov-2 variants b. 1.351 and b. 1.1. 7. Nature
+  Antibody resistance of {SARS-CoV-2} variants {B.1.351} and {B.1.1.7}. Nature
   {\bf 593}: 130--135.
 
 \bibitem[{Yuan {\em et~al.\/}}(2020){Yuan, Liu, Wu, Lee, Zhu, Zhao, Huang, Yu,
   Hua, Tien, {\em et~al.\/}}]{yuan2020structural}
 {Yuan, M., H.~Liu, N.~C. Wu, C.-C.~D. Lee, X.~Zhu, {\em et~al.\/}}, 2020
-  Structural basis of a shared antibody response to sars-cov-2. Science {\bf
+  Structural basis of a shared antibody response to {SARS-CoV-2}. Science {\bf
   369}: 1119--1123.
 
 \end{thebibliography}
