@@ -1,0 +1,88 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+\usepackage{color}
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex	
+								
+												
+\usepackage{amssymb}
+\usepackage{hyperref} 
+\usepackage[round,semicolon]{natbib}
+
+
+\newcommand{\comment}[1]{{\color{red}[\textsl{#1}]}}
+\newcommand{\response}[1]{{\color{black}#1}}
+
+
+\title{Response to reviews of ``An antibody-escape calculator for mutations to the SARS-CoV-2 receptor-binding domain'' for \textit{Virus Evolution}}
+\author{}
+
+\begin{document}
+\maketitle
+
+\emph{Below, the reviewer and editor comments {\color{blue} are in blue}, and may responses are in black.}
+
+\color{blue}
+
+\subsection*{Associate Editor: Adi Stern}
+
+Apologies for the delayed response, reviewing during pandemic seems to have become tricky.
+Both reviewers agree this is an excellent paper and a valuable resource.
+Both suggest a series of slight changes and clarifications that all seem valuable and doable.
+I agree with reviewer 2 that perhaps``estimator'' might be a better term than calculator to emphasize uncertainty. 
+Finally, I agree with the authors discussion (and reviewer 2) on the caveat of these data being based on pre-variant escape data.
+I do wonder how difficult it will be to implement newer versions that are based on future data with more complex variants?
+Perhaps worth adding a few words on this as well to the discussion.
+
+\response{Thanks to you and the reviewers for the helpful reviews. In the revised version, we have addressed all of the specific suggestions, including the three you mention above (see below for details).}
+
+\subsection*{Reviewer: 1}
+
+One of the key objectives for SARS-CoV-2 surveillance is to rapidly predict the impact that amino acid substitutions would have on important virus characteristics, including how well the spike receptor binding domain (RBD) will be recognized by therapeutic monoclonal antibodies and by polyclonal sera from subject following vaccination or infection.  The Bloom group has previously published a series of papers in which deep mutational scanning has been used to introduce all 20 amino acid substitutions at every site within the spike RBD and the impact on binding of monoclonal antibody and polyclonal antisera measured experimentally.  In this paper, Greaney et al. use this experimental data to develop an antibody-escape calculator to predict the functional impact of any combination of substitutions in the RBD on antibody binding.  They used data from three publications that measured virus neutralization of pseudoviruses carrying specific amino acid substitutions against convalescent or vaccine sera.  This calculator will be extremely helpful for the evaluation of emerging SARS-CoV-2 variants.  
+
+\comment{Thanks for the nice summary of the work.}
+
+While the significance of the work is very high, the manuscript would be improved by addressing the following points.
+
+For every monoclonal antibody, a single escape fraction value is calculated at each site by summarizing the impact of all 20 amino acid substitutions at the site as either the mean impact or the sum of the impacts to produce their escape maps.  When assessing the impact of a new mutation on binding escape, any mutation at that site appears to be treated equivalently.  An alternative approach would be to just use the specific escape fraction for the specific amino acid substitution at that site.  Thus, E484K would be treated differently from E484Q and E484A.  Indeed, one would expect that some substitutions would be more or less tolerated in terms of antibody binding.  The authors may have already evaluated this approach.  At a minimum, this point should be discussed in the manuscript.  But it might also be worthwhile to compare the performance of this more specific approach to the more generic approach implemented here.
+
+It is a little difficult to know exactly how the different parameters are being calculated since in many cases they are just describe in the text.  For example, in the Methods section they state that “We also normalize the site-level escape metrics for each antibody to account for difference in strengths of antibody selection” and that “essentially this corresponds to scaling the escape value for each antibody so that a value of one corresponds to the larger of the maximum escape as a site or 20 times the median value across sites”.  It would be much easier to understand how these values are being calculated if the actual equations for each step in the workflow were provided.
+
+There are several ways in which the binding score could be calculated, e.g., mean versus sum, specific substitutions versus generic substitutions, etc., but the authors only present the results from one approach.  It would be useful to present results from multiple configurations to determine if the results are robust to these configuration parameters.
+
+The most important aspect of the paper is the correlation between the calculated binding score and the experimentally-measure fold change in virus neutralization as presented in Figure 3, which would provide some kind of validation of the computational method.  The authors state in the text that “the escape-calculator scores correlate quite well with the measured neutralization titers across all studies and cohorts”; “quite well” seems pretty subjective.  At a minimum, the strength of correlation should be quantified by using something like a Spearman’s rho metric which could then be used to calculate a t test statistic and p-value.  Indeed, these metrics could be used to compare the performance of the different configuration parameters.
+
+It is not clear how to use the online calculator.  The instructions online refer to a Tweet chain but that provides a summary of how the calculations are performed, not on how to use the online tool.  It is not very intuitive and could use some simple explicit instructions on the page itself.
+
+\subsection*{Reviewer: 2}
+
+Greaney et al have developed a simple tool for estimating the impact of amino acid changes on antibody protection from SAR-CoV-2 variants. This is based on experimental data, much of which has been generated by these researchers. The text is clear and well written, the method is both sound and an easy to use implementation is provided. I only have some minor comments:
+
+Please make it clear in the abstract that the experimental data is generated on the early pre-variant of concern data and so mutations may differ in consequence on new variants such as Omicron. This would seem to be quite a big caveat with this type of data.
+
+Line 30, variants with reduced Ab neutralisation properties emerged before 2 years, e.g, Beta was designated in late 2020 in South Africa.
+
+Line 41, briefly define variants of concern as there's ongoing confusion between these and just variants.
+
+Line 54, the pop here at "complex black-box computational methods" is unwarranted and out of date relative to much contemporary machine leaning methods. Arguably simple residue based information from experiments is also a black-box as the mechanistic nuance of three-dimensional structural interactions are not really being accounted for. Maybe the authors could comment in the Discussion on why such a simple method works so well, e.g., linked to immunodominance of this spike region.
+
+Two lines into Results, mutations strictly speaking occur at the nucleotide level and result in amino acid replacements. Clearly the authors know this and it fine to use mutations as short-hand for the residue changes but at least make the distinction clear the first time this is referred to.
+
+Results, 3rd and 4th paragraph, let's not 'imagine' anything, please re-write.
+
+Page 2, "illustrative" would be more accurate than "toy" example.
+
+Finally, the authors should reflect on whether this is a "calculator" as opposed to an antibody-escape "estimator", i.e., capture the inaccuracy in the inferences a bit more clearly.
+
+\response{This is a good suggestion, and we have changed the text to use ``estimator'' rather than ``calculator.''}
+
+\color{black}
+\bibliographystyle{mbe}
+{\small
+\bibliography{references.bib}
+}
+
+
+\end{document}  
