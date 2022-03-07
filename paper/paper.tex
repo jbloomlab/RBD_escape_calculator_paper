@@ -140,7 +140,7 @@ As in the illustrative three-antibody example in the previous section, there are
 However, the peak at 484 is now larger than any other peak, reflecting the fact that antibodies targeting the class 2 epitope containing E484 are especially common in the human antibody response to early SARS-CoV-2 strains~\citep{yuan2020structural,robbiani2020convergent,greaney2021comprehensive,greaney2021mapping,chen2021convergent}.
 In addition, there are smaller peaks at a variety of other sites, reflecting the fact that each antibody has a somewhat idiosyncratic epitope (Figure \ref{fig:escape_calc}A).
 
-We can follow the principle outlined in the illustrative example in the previous section to calculate the expected polyclonal escape map \emph{after} mutating sites in the RBD.
+We can follow the principle outlined in the illustrative example in the previous section to estimate the expected polyclonal escape map \emph{after} mutating sites in the RBD.
 Specifically, we reduce the contribution of each antibody by an amount that scales with how strongly that antibody targets each mutated site (see Methods for details).
 For instance, the blue lines in Figure~\ref{fig:escape_calc}B show the polyclonal escape map after mutating site 484.
 Mutating site 484 obviously drops the contribution of that site, but it also decreases the contribution of other sites such as 490 that are commonly targeted by antibodies with epitopes that include site 484.
