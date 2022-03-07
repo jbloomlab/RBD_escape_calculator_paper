@@ -83,6 +83,8 @@ Importantly, the escape estimator is based on simple transformations of direct e
 A deep mutational scanning experiment can measure how all single amino-acid mutations to the SARS-CoV-2 RBD affect binding by a monoclonal antibody~\citep{greaney2021complete}.
 This mutation-level information can be summarized for each RBD site, such as by taking the mean or sum of mutation-level effects at a site.
 Here we will work with these site-level escape maps.
+We use site-level information for two reasons: mutation-level measurements tend to be more noisy and averaging them for a site decreases this noise, and using site-level information makes the approach independent of the particular wildtype amino acid at a site (which is useful if we want to keep using the calculator as the RBD evolves).
+However, we note that site-level information ignores the possibility of different mutations at a site having different effects, and so mutation-level approaches could also become useful as the quality of experimental data improve.
 
 As a small example to illustrate the principle behind our approach, Figure~\ref{fig:mini_example}A shows previously reported measurements~\citep{starr2021prospective, starr2021complete} of how mutations to each RBD site affect binding by three monoclonal antibodies: LY-CoV016 (etesevimab), LY-CoV555 (bamlanivimab), and REGN10987 (imdevimab).
 Each antibody targets a different epitope on the RBD: LY-CoV016 targets the class 1 epitope, LY-CoV555 the class 2 epitope, and REGN10987 the class 3 epitope~\citep{barnes2020sars,greaney2021mapping}.
@@ -209,7 +211,8 @@ However, we note that in addition to the interactive estimator at \url{https://j
 There are caveats that should be kept in mind when using the escape estimator.
 First, the estimator only considers sites in the RBD, and ignores mutations to other regions of spike.
 Second, the estimator assumes the neutralizing activity of human polyclonal serum is represented by an equipotent mix of the monoclonal antibodies that happen to have been previously characterized by deep mutational scanning.
-Third, the estimator simply averages site-level escape measurements across antibodies, and does not yet implement a real biophysical model of the combined activity of multiple antibodies~\citep{einav2020two}.
+Third, the estimator simply averages site-level escape measurements across antibodies, and ignores differences in the effects of different amino-acid mutations at the same site.
+Fourth, the estimator does not yet implement a real biophysical model of the combined activity of multiple antibodies~\citep{einav2020two}.
 Finally, and in our minds most significantly, the estimator estimates the impact of mutations in reference to antibodies targeted to the early Wuhan-Hu-1 RBD---an approach that is currently reasonable, but will become problematic as human exposure and vaccination histories diversify in the years to come (see last paragraph).
 
 Despite all these caveats, the escape estimator yields binding scores that correlate with experimentally measured neutralization titers.
