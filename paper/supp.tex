@@ -1,0 +1,52 @@
+\documentclass[9pt,twocolumn,twoside]{gsajnl_modified}
+% Use the documentclass option 'lineno' to view line numbers
+
+\usepackage[htt]{hyphenat}  % https://tex.stackexchange.com/a/543
+\usepackage[export]{adjustbox}
+\usepackage{xurl}
+\usepackage{stfloats}
+
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    \setcounter{topnumber}{2}
+    \setcounter{bottomnumber}{2}
+    \setcounter{totalnumber}{4}     % 2 may work better
+    \setcounter{dbltopnumber}{2}    % for 2-column pages
+    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+\runningtitle{} % For use in the footer 
+\runningauthor{}
+
+\usepackage{xr}
+\externaldocument[]{paper}
+
+\begin{document}
+
+\onecolumn
+\renewcommand{\thepage}{S\arabic{page}}
+\setcounter{page}{1}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+
+
+\section{Supplementary Material}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{../results/neut_studies/neut_studies_mean.png}
+\caption{A version of Figure~\ref{fig:neut_studies} where the estimations are made using the mean effects of tolerated mutations at a site rather than the total (sum) of the effects of tolerated mutations at a site. The results are almost identical.
+}
+\label{suppfig:coverage}
+\end{figure}
+
+
+
+
+
+\end{document}

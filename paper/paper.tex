@@ -164,7 +164,9 @@ This calculation is implemented in the interactive estimator at \url{https://jbl
 The data of \citet{lucas2021impact} was generated using authentic SARS-CoV-2 and sera from vaccinated individuals who were (top) or were not (bottom) previously infected with SARS-CoV-2.
 The data of \citet{uriu2021neutralization} and \citet{wang2021antibody} was generated using pseudovirus against convalescent (top) or vaccine (bottom) sera, with vaccine sera from Pfizer BNT162b2 or Moderna mRNA-1273 vaccines, respectively. 
 The fold changes are geometric means over all subjects in each cohort.
+Labels at the top of each plot shown the Pearson's R and associated P-value.
 An interactive version of this figure that allows mousing over points to see details is at \url{https://jbloomlab.github.io/RBD_escape_calculator_paper/neut_studies.html}.
+Supplementary Figure S1 shows almost identical results are obtained if the binding scores are computed using the mean of mutations at a site rather than the sum.
 }
 \label{fig:neut_studies}
 \end{SCfigure*}
@@ -250,7 +252,7 @@ The full deep mutational scanning data for all these antibodies are interactivel
 
 The deep mutational scanning measures an escape fraction for each tolerated RBD mutation against each antibody, which represents an estimate of how completely that mutation escapes antibody binding~\citep{greaney2021complete}.
 We summarize the mutation-level escape fractions into site-level measurements in two ways: taking the sum of the mutation escape fractions at each site, or taking the mean of the mutation escape fractions across all tolerated mutations at each site.
-The results reported in this paper use the sums as the site-level metric, although the estimator has an option (\texttt{escape\_metric}) to use the mean instead.
+The results reported in this paper use the sums as the site-level metric, although the estimator has an option (\texttt{escape\_metric}) to use the mean instead (the results are almost identical: compare Fig~\ref{fig:neut_studies} versus Supplementary Figure S1.
 
 We normalize the site-level escape metrics for each antibody to account for different strengths of antibody selection in different experiments using the approach described in \citet{greaney2021comprehensive} and implemented in \url{https://jbloomlab.github.io/dmslogo/dmslogo.utils.html#dmslogo.utils.AxLimSetter} with \texttt{min\_upperlim=1} and \texttt{max\_from\_quantile=(0.5, 0.05)}: essentially this corresponds to scaling the site escape values for each antibody so that a value of one corresponds to the larger of the maximum escape at a site or 20 times the median value across sites.
 Specifically, the normalization is done so that for each antibody $a$, the maximum escape $x_{a,r}$ at any site $r$ is set so that $1 = \max\left(\max_r \left[x_{a,r}\right], 20\tilde{x}_{a,r} \right)$ where $\tilde{x}_{a,r}$ is the median of $x_{a,r}$ across sites $r$ for antibody $a$.
@@ -311,7 +313,7 @@ Wuhan-Hu-1 &                                                             \\
 \section{Acknowledgments}
 We thank collaborators in the Crowe lab, Nussenzweig lab, Bjorkman lab, and at Vir Biotechnology for sharing the antibodies that were used in prior published studies to generate the deep mutational scanning data aggregated here.
 We thank the Moyo and de Oliveira labs and other researchers in South Africa and Botswana for rapidly sharing information about the Omicron variant to enable the analyses in the last section of the results.
-This work was supported in part by the NIH/NIAID under R01AI141707 (to JDB) and T32AI083203 (to AJG).
+This work was supported in part by the NIH/NIAID under contract HHS75N93021C00015, and grants R01AI141707 (to JDB) and T32AI083203 (to AJG).
 The work was also supported by the Gates Foundation grant INV-004949 to JDB.
 TNS is a Howard Hughes Medical Institute Fellow of the Damon Runyon Cancer Research Foundation.
 JDB is an Investigator of the Howard Hughes Medical Institute.
@@ -322,4 +324,6 @@ JDB is an inventor on a Fred Hutch licensed patents related to deep mutational s
 
 \bibliography{references}
 }
+
+
 \end{document}
