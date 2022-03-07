@@ -14,6 +14,7 @@ rule all:
     input:
         'results/neut_studies/neut_studies.html',
         'results/neut_studies/neut_studies.png',
+        'results/neut_studies/neut_studies_mean.png',
         'results/variants/variants.html',
         'results/variants/variants.png',
         'results/variants/variants.tex',
@@ -60,6 +61,17 @@ rule plot_neut_studies:
     output:
         html='results/neut_studies/neut_studies.html',
         png='results/neut_studies/neut_studies.png',
+    params: metric="sum of mutations at site"
+    notebook: 'plot_neut_studies.py.ipynb'
+
+rule plot_neut_studies_mean:
+    input:
+        expand("results/neut_studies/{study}_data.csv",
+               study=['LucasIwasaki', 'UriuSato', 'WangHo'])
+    output:
+        html='results/neut_studies/neut_studies_mean.html',
+        png='results/neut_studies/neut_studies_mean.png',
+    params: metric="mean of mutations at site"
     notebook: 'plot_neut_studies.py.ipynb'
 
 rule get_WangHo_data:
