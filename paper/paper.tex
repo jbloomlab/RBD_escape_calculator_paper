@@ -76,12 +76,12 @@ However, SARS-CoV-2 variants of concern (variants with reduced immune recognitio
 
 Here we take a step towards addressing this challenge by aggregating deep mutational scanning data across many antibodies to assess the impacts of mutations in the spike receptor-binding domain (RBD), which is the primary target of neutralizing antibodies to SARS-CoV-2~\citep{piccoli2020mapping,greaney2021comprehensive,schmidt2021high}.
 The resulting ``escape estimator'' enables qualitative visualization and quantitative scoring of the antigenic effects of arbitrary combinations of mutations.
-Importantly, the escape estimator is based on simple transformations of direct experimental measurements, and and so its calculations can be intuitively visualized using the interactive interface we provide. 
+Importantly, the escape estimator is based on simple transformations of direct experimental measurements, and so its calculations can be intuitively visualized using the interactive interface we provide. 
 
 \section{Results}
 
 \subsection{Combining monoclonal antibody escape maps reveals correlated and independent viral antigenic mutations}
-A deep mutational scanning experiment can measure how all single amino-acid mutations to the SARS-CoV-2 RBD affect binding by a monoclonal antibody~\citep{greaney2021complete}, where we here consider mutations at the level of amino-acid replacements rather than in terms of the underlying nucleotide changes.
+A deep mutational scanning experiment can measure how all single amino-acid mutations to the SARS-CoV-2 RBD affect binding by a monoclonal antibody~\citep{greaney2021complete}.
 This mutation-level information can be summarized for each RBD site, such as by taking the mean or sum of mutation-level effects at a site.
 Here we will work with these site-level escape maps.
 We use site-level information for two reasons: mutation-level measurements tend to be more noisy and averaging them for a site decreases this noise, and using site-level information makes the approach independent of the particular wildtype amino acid at a site (which is useful if we want to keep using the calculator as the RBD evolves).
@@ -253,7 +253,7 @@ The full deep mutational scanning data for all these antibodies are interactivel
 
 The deep mutational scanning measures an escape fraction for each tolerated RBD mutation against each antibody, which represents an estimate of how completely that mutation escapes antibody binding~\citep{greaney2021complete}.
 We summarize the mutation-level escape fractions into site-level measurements in two ways: taking the sum of the mutation escape fractions at each site, or taking the mean of the mutation escape fractions across all tolerated mutations at each site.
-The results reported in this paper use the sums as the site-level metric, although the estimator has an option (\texttt{escape\_metric}) to use the mean instead (the results are almost identical: compare Fig~\ref{fig:neut_studies} versus Supplementary Figure S1.
+The results reported in this paper use the sums as the site-level metric, although the estimator has an option (\texttt{escape\_metric}) to use the mean instead (the results are almost identical: compare Figure~\ref{fig:neut_studies} versus Supplementary Figure S1.
 
 We normalize the site-level escape metrics for each antibody to account for different strengths of antibody selection in different experiments using the approach described in \citet{greaney2021comprehensive} and implemented in \url{https://jbloomlab.github.io/dmslogo/dmslogo.utils.html#dmslogo.utils.AxLimSetter} with \texttt{min\_upperlim=1} and \texttt{max\_from\_quantile=(0.5, 0.05)}: essentially this corresponds to scaling the site escape values for each antibody so that a value of one corresponds to the larger of the maximum escape at a site or 20 times the median value across sites.
 Specifically, the normalization is done so that for each antibody $a$, the maximum escape $x_{a,r}$ at any site $r$ is set so that $1 = \max\left(\max_r \left[x_{a,r}\right], 20\tilde{x}_{a,r} \right)$ where $\tilde{x}_{a,r}$ is the median of $x_{a,r}$ across sites $r$ for antibody $a$.
